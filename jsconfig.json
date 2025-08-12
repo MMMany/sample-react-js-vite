@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/jsconfig",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "es2022"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["./src/*"]
+    },
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx"
+  }
+}

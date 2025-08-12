@@ -1,0 +1,12 @@
+{
+  // VSCode의 기본 포맷터를 Prettier로 설정합니다.
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 파일을 저장할 때마다 포맷터를 실행합니다.
+  "editor.formatOnSave": true,
+  // 파일을 저장할 때 ESLint가 자동으로 수정 가능한 문제들을 수정하도록 합니다.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // ESLint가 다음 언어들을 검사하도록 설정합니다.
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}
