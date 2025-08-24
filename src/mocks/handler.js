@@ -1,17 +1,11 @@
 import { http, HttpResponse } from "msw";
 import { isArray, isString } from "lodash-es";
-
-const posts = [
-  { id: "1", title: "Post 1" },
-  { id: "2", title: "Post 2" },
-  { id: "3", title: "Post 3" },
-];
+import loginHandlers from "#/pages/LoginPage/api/mocks/handlers";
 
 const values = ["value-1", "value-2", "value-3"];
 
 const handlers = [
-  http.get("/posts", () => HttpResponse.json(posts)),
-  // http.get("/items", () => HttpResponse.json(values)),
+  ...loginHandlers,
   http.get("/items", () => {
     return new Promise((resolve) => {
       setTimeout(

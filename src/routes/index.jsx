@@ -1,8 +1,10 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import MainLayout from "#/layout/MainLayout";
+import ProtectedRoute from "./ProtectedRoute";
 
 const SamplePage = lazy(() => import("#/pages/SamplePage"));
+const LoginPage = lazy(() => import("#/pages/LoginPage"));
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +14,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: SamplePage,
+        element: (
+          <ProtectedRoute>
+            <SamplePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/login",
+        Component: LoginPage,
       },
     ],
   },
