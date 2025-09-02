@@ -6,7 +6,7 @@ const values = ["value-1", "value-2", "value-3"];
 
 const handlers = [
   ...loginHandlers,
-  http.get("/items", () => {
+  http.get("/api/items", () => {
     return new Promise((resolve) => {
       setTimeout(
         () => resolve(HttpResponse.json(values)),
@@ -15,7 +15,7 @@ const handlers = [
       );
     });
   }),
-  http.post("/items", async ({ request }) => {
+  http.post("/api/items", async ({ request }) => {
     const body = await request.text();
     if (!isString(body)) {
       return HttpResponse.text("invalid body", { status: 400 });
@@ -29,7 +29,7 @@ const handlers = [
       ),
     );
   }),
-  http.put("/items", async ({ request }) => {
+  http.put("/api/items", async ({ request }) => {
     const body = await request.json();
     // clear 'values' and append all 'req.body'
     if (!isArray(body) || body.some((it) => !isString(it))) {

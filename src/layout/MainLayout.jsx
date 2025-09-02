@@ -1,9 +1,9 @@
 import { Box, Container, Typography, AppBar, Toolbar, Avatar, Paper, Button, Stack } from "@mui/material";
 import { Outlet } from "react-router";
-import useAuthStore from "#/stores/authStore";
+import useAuthStore from "#/stores/auth";
 
 function MainLayout() {
-  const { isLoggedIn, logout } = useAuthStore();
+  const { accessToken, logout } = useAuthStore();
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -11,7 +11,7 @@ function MainLayout() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h5">Javascript + vite + react + MUI</Typography>
           <Stack direction="row" spacing={2}>
-            {isLoggedIn && (
+            {accessToken && (
               <Button sx={{ color: "white" }} onClick={logout}>
                 Logout
               </Button>

@@ -2,6 +2,7 @@ import { loadEnv } from "vite";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import jsconfigPaths from "vite-jsconfig-paths";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -10,7 +11,15 @@ export default defineConfig(({ mode }) => {
   console.log("enable mock :", env.VITE_MOCK === "true");
 
   return {
-    plugins: [react(), jsconfigPaths()],
+    plugins: [
+      react(),
+      jsconfigPaths(),
+      visualizer({
+        filename: "./build-report.html",
+        gzipSize: true,
+        brotliSize: true,
+      }),
+    ],
     resolve: {
       alias: {
         "#/*": "src/*",

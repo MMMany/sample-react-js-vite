@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "./axiosSetup";
 import App from "./App";
 
 async function enableMocking() {

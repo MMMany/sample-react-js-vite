@@ -7,7 +7,7 @@ import { useLogin } from "./api";
 
 export default function LoginPage() {
   const formMethods = useForm();
-  const { isLoggedIn } = useAuthStore();
+  const { accessToken } = useAuthStore();
   const { mutate: login, isPending, isError, error } = useLogin();
 
   const onSubmit = ({ authInfo }) => {
@@ -15,7 +15,7 @@ export default function LoginPage() {
     login(authInfo);
   };
 
-  return isLoggedIn ? (
+  return accessToken ? (
     <Navigate to="/" replace={true} />
   ) : (
     <FormProvider {...formMethods}>

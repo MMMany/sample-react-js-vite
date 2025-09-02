@@ -13,7 +13,7 @@ function FormCheckboxGroup({ name, label = "", values = [], initialSelected = []
   const { control } = useFormContext();
 
   const [_values, setValues] = useState(() => {
-    return values.map((v) => ({ id: uuidv4(), value: v }));
+    return values?.map((v) => ({ id: uuidv4(), value: v })) ?? [];
   });
 
   useMemo(() => {
